@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class playerController : MonoBehaviour 
 {
 	private Rigidbody rb;
 	public float speed;
 	public int ammo;
+	public Text ammoCount;
 
 
 	// Use this for initialization
@@ -14,7 +17,7 @@ public class playerController : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 		ammo = 0;
-
+		SetCountText ();
 	}
 	
 	void FixedUpdate()
@@ -33,7 +36,14 @@ public class playerController : MonoBehaviour
 		{
 			other.gameObject.SetActive(false);
 			ammo = ammo + 7;
+			SetCountText ();
 		}
+
+	}
+
+	void SetCountText()
+	{
+		ammoCount.text =  "Ammo: " + ammo.ToString ();
 
 	}
 
